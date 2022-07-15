@@ -110,14 +110,12 @@ let rt = new Blog()
 
 
 function reload(){
-    console.log("come")
     const elements = document.getElementsByClassName("article-card");
     while(elements.length > 0){
         elements[0].parentNode.removeChild(elements[0]);
     }
     console.log(myblogs)
     for(let i=0;i<myblogs.length;i++){
-        console.log(myblogs[i])
         rt.create(myblogs[i])
     }
 }
@@ -149,12 +147,7 @@ fetch('./storage.json')
   .then(data => getData(data))
  function getData(data){
     myblogs = data;
-    console.log(myblogs[0][0])
     reload()
  }
-
-
-
-
 
 
