@@ -6,6 +6,10 @@
 	box-sizing: border-box;
 }
 
+html{
+	overflow-y: scroll;
+}
+
 body {
 	font-family: 'Nunito Sans';
 }
@@ -32,7 +36,7 @@ nav ul a {
 	color: black;
 }
 
-.button {
+.button{
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -40,6 +44,7 @@ nav ul a {
 	height: 40px;
 	background: #6C63FF;
 	border-radius: 4px;
+	border: none;
 	font-size: 18px;
 	line-height: 25px;
 	text-align: center;
@@ -57,18 +62,20 @@ nav ul a {
 } */
 
 .body-div1 {
+	margin-left: 3vw;
+	margin-right: 3vw;
 	margin-top: 25px;
 	font-size: 24px;
 	line-height: 33px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 60px;
+	margin-bottom: 2vw;
 }
 
 .article-card {
-	width: 320px;
-	margin: 30rem 0;
+	width: 32vm;
+	margin: 5rem;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -87,15 +94,49 @@ nav ul a {
 	line-height: 22px;
 	margin: 15px 0;
 }
+.article-card img {
+	margin-right: 2rem;
+}
+
+.article-card button{
+	width: 6rem;
+	height: 2.5rem;
+	border-radius: 4px;
+	border: none;
+	font-size: 15px;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+	background: #6C63FF;
+	margin-right: 0.5rem;
+}
+
+button:hover{
+	background: #534cd4;
+}
+
+button:active{
+	transform: scale(1.05);
+}
+
+
 
 #image{
 	margin-top: 30px;
 }
 .body-div2 {
 	display: flex;
-	flex-direction: row ;
-	/* justify-content: space-between; */
+	flex-direction: column ;
+	/*justify-content: space-between;*/
 	float: left;
+}
+.card-text{
+	width: 80vw;
+	float: left;
+}
+.blogimg{
+	width:40vw;
+	height:25vw;
 }
 
 #popup {
@@ -109,13 +150,20 @@ nav ul a {
 	overflow: auto;
 }
 
-img#close {
+.clo {
 	position: absolute;
-	right: -910px;
+	right: 3vw;
 	margin: 13px 0px 0px 19px;
 	cursor: pointer;
 	z-index: 9;
+	background: transparent;
+	border: none;
 }
+.clo:hover{
+	background: transparent;
+	transform: scale(1.2);
+}
+
 
 img#rect {
 	position: absolute;
@@ -129,21 +177,21 @@ img#rect {
 div#popupContact {
 	display: none;
 	flex-direction: column;
-	position: absolute;
-	left: 45%;
-	top: 17%;
-	margin-left: -400px;
+	position: fixed;
+	width: 55vw;
+	left: 23vw;
+	top: 10%;
 }
 
 #card {
-	position: absolute;
 	display: flex;
 	justify-content: flex-center;
 	align-items: center;
 	/* width: 920px; height : 572px; */
-	padding: 108px 0px 0px 18px;
+	padding: 120px 0px 0px 0px;
 	flex-direction: column;
-	border: 2px solid gray;
+	box-shadow: 1px 1px 5px rgba(100, 100, 100, 0.4);
+	border-radius: 10px;
 	font-family: raleway;
 	background-color: #fff;
 	/* height: 572px; */
@@ -165,24 +213,24 @@ h2 {
 	display: flex;
 }
 
-input[type="text"] {
+input {
 	
 	padding: 0px 0px 0px 21px;
-	width: 884px;
-	height: 49px;
+	width: 50vw;
+	height: 40px;
 	color: #828282;
 	font-size: 18px;
 	line-height: 25px;
 	font-family: Nunito;
 	font-style: normal;
 	font-weight: normal;
+	margin-bottom: 1vw;
 }
 
 textarea {
-	margin:14px 0px 0px 0px;
 	padding: 12px 0px 0px 20px;
-	width: 884px;
-	height: 232px;
+	width: 50vw;
+	height: 150px;
 	font-family: Nunito;
 	font-style: normal;
 	font-weight: normal;
@@ -190,6 +238,7 @@ textarea {
 	line-height: 25px;
 	display: flex;
 	color: #828282;
+	margin-bottom: 1vw;
 }
 
 ::placeholder {
@@ -201,18 +250,19 @@ textarea {
 	color: #828282;
 }
 
-#post{
-font-family: Nunito;
-font-style: normal;
+.post{
 font-weight: 600;
 font-size: 18px;
 line-height: 25px;
 width: 100px;
 height: 39px;
-margin: 71px 64px 103px 784px;
-align-items: center;
+margin-top:  40px;
+margin-bottom: 50px;
+margin-right: 5%;
+margin-left: 75%;
 text-align: center;
 background: #6C63FF;
 border-radius: 4px;
 color: #FFFFFF;
+border: none;
 }
