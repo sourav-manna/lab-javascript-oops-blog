@@ -2,8 +2,9 @@
 /* Fill your code*/
 document.getElementById("addBlog").onclick = function (){
     if(document.getElementById("update1")){
-        document.getElementById("update1").innerHTML = "Post"
         document.getElementById("update1").id = "post"
+        document.getElementById("post").innerHTML = "Post"
+        
     }
     document.getElementById("imagelink").value=null
     document.getElementById("title").value=null
@@ -15,21 +16,34 @@ document.getElementById("addBlog").onclick = function (){
 
 document.getElementById("close").onclick = function (){
     document.getElementById("popupContact").style.display = "none"
+    document.getElementById("imagelink").value=null
+    document.getElementById("title").value=null
+    document.getElementById("detail").value=null
+    document.getElementById("date").value=null
+    document.getElementById("author").value=null
 }
 
 
 function deleteBlog(iddd){
-    document.getElementById(iddd).remove()
+    for(let i=0;i<myblogs.length;i++){
+        if(myblogs[i][5] === iddd){
+            myblogs.splice(myblogs.indexOf(myblogs[i]), 1)
+            break
+        }
+    }
+    reload()
 }
 
 
 function editBlog(iddd){
+    if(document.getElementById('post')){
     document.getElementById("post").innerHTML = "Update"
     document.getElementById("post").id = "update1"
+    }
     ii = -1
 
     for(let i=0;i<myblogs.length;i++){
-        if(myblogs[i][5] == iddd){
+        if(myblogs[i][5] === iddd){
             ii = i
             break
         }
@@ -43,23 +57,33 @@ function editBlog(iddd){
 
     
     document.getElementById("popupContact").style.display = "block"
+ 
+   
     document.getElementById("update1").onclick = function(){
+        if(!document.getElementById("update1")){
+            posting()
+        }else{
+        console.log("up")
         let data = []
         data.push(document.getElementById("imagelink").value)
         data.push(document.getElementById("title").value)
         data.push(document.getElementById("detail").value)
         data.push(document.getElementById("date").value)
         data.push(document.getElementById("author").value)
-
+        data.push(myblogs[ii][5])
         myblogs[ii] = data
-        reload()
         document.getElementById("popupContact").style.display = "none"
-        document.getElementById("update1").innerHTML = "Post"
-        document.getElementById("update1").id = "post"
+        reload()
+        document.getElementById("imagelink").value=null
+        document.getElementById("title").value=null
+        document.getElementById("detail").value=null
+        document.getElementById("date").value=null
+        document.getElementById("author").value=null
+        }
     }
-    
-   
+    return
 }
+      
 class Blog {
     create(data){
         let newblog = document.createElement('div')
@@ -120,7 +144,20 @@ function reload(){
     }
 }
 
-document.getElementById("post").onclick = function(){
+//test
+let myblogs = []
+
+fetch('./storage.json')
+  .then(res => res.json()) // the .json() method parses the JSON response into a JS object literal
+  .then(data => getData(data))
+ function getData(data){
+    myblogs = data;
+    reload()
+ }
+
+ document.getElementById("post").onclick = function() {posting()}
+function posting(){
+    console.log("post")
     let data = []
     data.push(document.getElementById("imagelink").value)
     data.push(document.getElementById("title").value)
@@ -128,8 +165,10 @@ document.getElementById("post").onclick = function(){
     data.push(document.getElementById("date").value)
     data.push(document.getElementById("author").value)
 
-    let idd = myblogs[myblogs.length-1][5]
+    let idd = parseInt(myblogs[myblogs.length-1][5])
+    
     data.push((idd+1).toString())
+    console.log(data[5])
     myblogs.push(data)
     document.getElementById("imagelink").value=null
     document.getElementById("title").value=null
@@ -140,14 +179,5 @@ document.getElementById("post").onclick = function(){
     document.getElementById("popupContact").style.display = "none"
 }
 
-//test
-let myblogs = []
-fetch('./storage.json')
-  .then(res => res.json()) // the .json() method parses the JSON response into a JS object literal
-  .then(data => getData(data))
- function getData(data){
-    myblogs = data;
-    reload()
- }
 
 
